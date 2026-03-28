@@ -14,6 +14,24 @@ AI驱动的微信公众号文章分析工具
 
 ## 🚀 快速开始
 
+### 0. 安装 Skill
+
+**方法一：通过 GitHub 安装**
+
+在 Claude Code 中运行：
+
+```bash
+git clone https://github.com/yang202009/wechat-article-analyzer.git ~/.claude/skills/wechat-article-analyzer
+```
+
+**方法二：手动安装**
+
+1. 下载本仓库
+2. 将整个文件夹复制到 `~/.claude/skills/wechat-article-analyzer`
+3. 重启 Claude Code
+
+安装后，在 Claude Code 中输入 `/wechat-article-analyzer` 即可看到该 skill。
+
 ### 1. 获取 API Key
 
 访问 [极致了数据](https://www.dajiala.com/) 注册账号并获取 API Key。
