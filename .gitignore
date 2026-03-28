@@ -1,0 +1,13 @@
+# Environment variables
+.env
+
+# Cache
+.wechat_cache/
+
+# Output directories
+wechat_analysis_*/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
