@@ -14,7 +14,14 @@ AI驱动的微信公众号文章分析工具
 
 ## 🚀 快速开始
 
-### 0. 安装 Skill
+### 0. 安装依赖
+
+```bash
+cd ~/.claude/skills/wechat-article-analyzer
+pip install -r requirements.txt
+```
+
+### 1. 安装 Skill
 
 **方法一：通过 GitHub 安装**
 
@@ -68,12 +75,14 @@ cp .env.example .env
 ## 📊 评分标准
 
 ### 实战场景（0-5分）
+
 - **5分**：详细实现方案，包含代码/架构
 - **3分**：一般场景描述
 - **1分**：仅提及用例
 - **0分**：无实战内容
 
 ### 技术前沿（0-5分）
+
 - **5分**：前沿技术（2025-2026）
 - **3分**：近期实践（2023-2024）
 - **1分**：成熟技术
@@ -96,6 +105,7 @@ cp .env.example .env
 ## ✅ 测试验证
 
 已通过完整测试：
+
 - ✅ 3篇文章小规模测试
 - ✅ 10篇文章中等规模测试
 - ✅ 数据完整性验证100%通过
@@ -104,6 +114,7 @@ cp .env.example .env
 ## 🔧 技术架构
 
 ### 项目结构
+
 ```
 wechat-article-analyzer/
 ├── scripts/           # 核心脚本
@@ -115,11 +126,14 @@ wechat-article-analyzer/
 │   ├── test_workflow.py       # 工作流测试
 │   └── e2e_test.py            # 端到端测试
 ├── skill.md           # Claude Code skill 定义
+├── requirements.txt   # Python 依赖
+├── .env               # 环境变量配置
 ├── .env.example       # 环境变量模板
 └── .gitignore         # Git 忽略规则
 ```
 
 ### 工作流程
+
 ```
 1. fetch_articles.py → 抓取文章，保存为 article_*.txt + meta_*.json
 2. Claude 直接分析 → 读取文件，生成 scores.json（AI评分+摘要）
@@ -127,15 +141,26 @@ wechat-article-analyzer/
 4. cleanup.py → 删除临时文件
 ```
 
+
 ## 📝 版本历史
 
-### v1.1 (2026-03-28) 
+### v1.2 (2026-03-28)
+
+- ✅ 添加 python-dotenv 支持
+- ✅ 增强错误处理和超时机制
+- ✅ API URL 可配置化
+- ✅ 添加 requirements.txt
+- ✅ 完善故障排查文档
+
+### v1.1 (2026-03-28)
+
 - ✅ 修复数据错位问题
 - ✅ 添加完整验证机制
 - ✅ 优化引号字符处理
 - ✅ 通过10篇文章测试
 
 ### v1.0
+
 - 初始版本
 
 ## 📄 许可证
