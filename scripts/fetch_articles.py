@@ -4,10 +4,18 @@ import requests
 import argparse
 import os
 import time
+import sys
 from pathlib import Path
+from dotenv import load_dotenv
 
-API_URL = "https://www.dajiala.com/fbmain/monitor/v3/kw_search"
+load_dotenv(Path(__file__).parent.parent / '.env')
+
+API_URL = os.getenv("WECHAT_API_URL", "https://www.dajiala.com/fbmain/monitor/v3/kw_search")
 API_KEY = os.getenv("WECHAT_API_KEY", "")
+
+if not API_KEY:
+    print("Error: WECHAT_API_KEY not found in .env file", file=sys.stderr)
+    sys.exit(1)
 CACHE_DIR = Path(".wechat_cache")
 
 def fetch_articles(keyword, period=30, pages=1, output_dir="."):
@@ -33,12 +41,17 @@ def fetch_articles(keyword, period=30, pages=1, output_dir="."):
             "any_kw": "",
             "ex_kw": ""
         }
-        
-        response = requests.post(API_URL, json=payload)
-        data = response.json()
-        articles = data.get('data', [])
-        all_articles.extend(articles)
-        print(f"Fetched page {page}: {len(articles)} articles")
+
+        try:
+            response = requests.post(API_URL, json=payload, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            articles = data.get('data', [])
+            all_articles.extend(articles)
+            print(f"Fetched page {page}: {len(articles)} articles")
+        except requests.RequestException as e:
+            print(f"Error fetching page {page}: {e}", file=sys.stderr)
+            continue
     
     for i, article in enumerate(all_articles):
         content = article.get('content', '')[:1500]
