@@ -39,13 +39,13 @@ git clone https://github.com/yang202009/wechat-article-analyzer.git ~/.claude/sk
 
 安装后，在 Claude Code 中输入 `/wechat-article-analyzer` 即可看到该 skill。
 
-### 1. 获取 API Key
+### 2. 获取 API Key
 
 访问 [极致了数据](https://www.dajiala.com/) 注册账号并获取 API Key。
 
 极致了数据是一个提供公众号API和视频号API的第三方平台，通过该平台可以获取微信公众号文章数据。
 
-### 2. 配置环境变量
+### 3. 配置环境变量
 
 复制 `.env.example` 为 `.env` 并填入你的 API Key：
 
@@ -54,7 +54,7 @@ cp .env.example .env
 # 编辑 .env 文件，设置 WECHAT_API_KEY=你的密钥
 ```
 
-### 3. 使用
+### 4. 使用
 
 在Claude Code中直接使用：
 
